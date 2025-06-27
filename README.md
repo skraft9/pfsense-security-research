@@ -68,6 +68,16 @@ This enables exfiltration of:
 
 ## Proof of Concept
 
+**Create group and assign privilege `WebCfg - Diagnostics: Command`:**
+![Screenshot 2025-06-27 133201](https://github.com/user-attachments/assets/b1063a5c-442a-4628-ac94-e0fa5d6f10c4)
+
+> I acknowledge and appreciate the built-in warning in the pfSense UI. However, this disclaimer does not constitute proper access control.
+>
+> The existence of a warning does not justify a design that equates a single web permission with unrestricted system-level file access.
+
+**Assign group to `dev` user:**
+![Screenshot 2025-06-27 133218](https://github.com/user-attachments/assets/7224934e-ae31-4aa1-b879-b4f1aee7e00c)
+
 This proof-of-concept authenticates using a user account `dev` that is only assigned the `WebCfg - Diagnostics: Command` permission.
 
 ```bash
@@ -94,16 +104,6 @@ curl -k -b cookies.txt -s -X POST https://<IP>/diag_command.php \
   -d "dlPath=/etc/passwd"
 ```
 
-**Group configuration and assigned privileges:**
-![Screenshot 2025-06-27 133201](https://github.com/user-attachments/assets/b1063a5c-442a-4628-ac94-e0fa5d6f10c4)
-
-> I acknowledge and appreciate the built-in warning in the pfSense UI. However, this disclaimer does not constitute proper access control.
->
-> The existence of a warning does not justify a design that equates a single web permission with unrestricted system-level file access.
-
-**Screenshot of `dev` user:**
-![Screenshot 2025-06-27 133218](https://github.com/user-attachments/assets/7224934e-ae31-4aa1-b879-b4f1aee7e00c)
-
 ---
 
 ## Demo
@@ -113,11 +113,11 @@ curl -k -b cookies.txt -s -X POST https://<IP>/diag_command.php \
 
 ## Impact
 
-Any pfSense user assigned the `Diagnostics: Command` privilege can:
+Any pfSense user assigned the `WebCfg - Diagnostics: Command` privilege can:
 
 * Read sensitive local system files
 * Extract backups, credentials, and keys
-* Access files far beyond their intended GUI role
+* Access files far beyond their intended permissions
 
 This violates the principle of least privilege and breaks logical privilege boundaries.
 
