@@ -70,7 +70,7 @@ This enables exfiltration of sensitive system files such as:
 **Create group and assign privilege `WebCfg - Diagnostics: Command`:**
 ![Screenshot 2025-06-27 133201](https://github.com/user-attachments/assets/b1063a5c-442a-4628-ac94-e0fa5d6f10c4)
 
-> I acknowledge and appreciate the built-in warning in the pfSense UI. However, this disclaimer does not constitute proper access control.
+> I acknowledge the built-in security warning in the pfSense UI related to the `WebCfg - Diagnostics: Command` permission. However, this disclaimer does not constitute as proper access control.
 >
 > The existence of a warning does not justify a design that equates a single web permission with unrestricted system-level file access.
 
