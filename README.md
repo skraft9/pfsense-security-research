@@ -128,11 +128,12 @@ This violates the principle of least privilege and breaks logical privilege boun
 
 * **2025-06-26:** Vulnerability reported to Netgate
 * **2025-06-27:** Netgate responded, dismissing the issue as intended behavior
-* **2025-06-27:** Researcher rebuttal, but was dismissed again - initiated public disclosure due to vendor inaction
+* **2025-06-27:** Researcher rebuttal, but was dismissed again 
+* **2025-06-27:** Researcher initiated public disclosure due to vendor dismissal
 
 ![image](https://github.com/user-attachments/assets/8317dd1d-95c7-4000-a942-f9435d40cfa8)
 
-> While the vendor asserts that access to this page equates to root, this conflates GUI-level permissions with unrestricted backend access.
+> While the vendor asserts that access to this page equates to root, this conflates web-level permissions with unrestricted backend access.
 >
 > Privilege should be technically enforced — not assumed — and warnings in the UI are no substitute for secure design.
 
