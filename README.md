@@ -67,14 +67,14 @@ This enables exfiltration of sensitive system files such as:
 
 ## Proof of Concept
 
-**Create group and assign privilege `WebCfg - Diagnostics: Command`:**
+**Create group and assign a single privilege** (`WebCfg - Diagnostics: Command`)
 ![Screenshot 2025-06-27 133201](https://github.com/user-attachments/assets/b1063a5c-442a-4628-ac94-e0fa5d6f10c4)
 
 > I appreciate the built-in security warning related to assigning the `WebCfg - Diagnostics: Command` privilege. However, this disclaimer does not constitute as proper access control.
 >
 > The existence of a warning does not justify a design that equates a single permission with unrestricted system-level file access.
 
-**Assign group to `dev` user:**
+**Assign group to** `dev` **user**
 ![Screenshot 2025-06-27 133218](https://github.com/user-attachments/assets/7224934e-ae31-4aa1-b879-b4f1aee7e00c)
 
 This proof-of-concept authenticates using a user account `dev` that is only assigned the `WebCfg - Diagnostics: Command` permission.
