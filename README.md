@@ -57,12 +57,11 @@ There are no security checks or sanitization measures applied to the user-contro
 
 Any file path the PHP process can read will be served back to the user.
 
-This enables exfiltration of:
+This enables exfiltration of sensitive system files such as:
 
 * `/etc/passwd`
 * SSH private keys
 * VPN credentials
-* System-wide configuration
 
 ---
 
