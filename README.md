@@ -152,4 +152,4 @@ This violates the principle of least privilege and breaks logical privilege boun
 
 > Note: I selected `PR: Low` since the exploit only requires a narrowly scoped permission (`WebCfg - Diagnostics: Command`) and did not explicitly grant the user full admin permissions.
 
-**CVSS Base Score: 6.5 (Medium)**
+**Estimated CVSS Base Score: 6.5 (Medium)**
