@@ -1,4 +1,4 @@
-# Arbitrary File Read in pfSense 2.8.0 via Diagnostics Interface
+# Arbitrary File Read in pfSense 2.8.0 via Diagnostics Web Interface
 
 #### CVE ID: *Pending*
 
