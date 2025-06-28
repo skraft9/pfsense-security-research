@@ -62,7 +62,7 @@ Any file path the PHP process can read will be served back to the user.
 **Create group and assign a single privilege** (`WebCfg - Diagnostics: Command`)
 ![Screenshot 2025-06-27 133201](https://github.com/user-attachments/assets/b1063a5c-442a-4628-ac94-e0fa5d6f10c4)
 
-> I appreciate the built-in security warning related to assigning the `WebCfg - Diagnostics: Command` privilege. However, this disclaimer does not constitute as proper access control.
+> I appreciate the built-in security warning related to assigning the `WebCfg - Diagnostics: Command` privilege. But this disclaimer does not constitute as proper access control.
 >
 > A permission in a web interface should be scoped based on its label and intended use — not assumed to equate to root-level access on the underlying operating system.
 
@@ -150,6 +150,6 @@ This violates the principle of least privilege and breaks logical privilege boun
 | **I: Integrity**            | N (None)      | No tampering                                           |
 | **A: Availability**         | N (None)      | No denial-of-service                                   |
 
-> Note: I selected `PR: Low` since the exploit only requires a narrowly scoped permission (`WebCfg - Diagnostics: Command`) and did not explicitly grant full admin access.
+> Note: I selected `PR: Low` since the exploit only requires a narrowly scoped permission (`WebCfg - Diagnostics: Command`) and did not explicitly grant the user full admin permissions.
 
 **CVSS Base Score: 6.5 (Medium)**
