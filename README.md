@@ -129,9 +129,15 @@ This violates the principle of least privilege and breaks logical privilege boun
 * **2025-06-27:** Researcher responded with technical rebuttal — vendor reiterated dismissal
 * **2025-06-27:** Researcher initiated public disclosure due to final vendor dismissal — requested CVE assignment from MITRE
 
+---
+
 ![Screenshot 2025-06-28 122505](https://github.com/user-attachments/assets/6b0cfc68-fd06-4d53-8e12-11b777e8e29e)
 
+---
+
 ![image](https://github.com/user-attachments/assets/8317dd1d-95c7-4000-a942-f9435d40cfa8)
+
+---
 
 > While the vendor asserts that access to this page equates to root, this conflates web-level permissions with unrestricted backend access.
 >
