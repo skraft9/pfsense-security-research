@@ -82,7 +82,7 @@ csrf_token=$(grep '__csrf_magic' login_page.html | grep 'value=' | sed -E 's/.*v
 curl -k -b cookies.txt -c cookies.txt \
   -d "__csrf_magic=$csrf_token" \
   -d "usernamefld=dev" \
-  -d "passwordfld=pfsense" \
+  -d "passwordfld=pass" \
   -d "login=Sign+In" \
   https://<IP>/index.php > /dev/null
 
