@@ -127,7 +127,7 @@ This violates the principle of least privilege and breaks logical privilege boun
 * **2025-06-26:** Vulnerability reported to Netgate
 * **2025-06-27:** Netgate responded, dismissing the issue as intended behavior
 * **2025-06-27:** Researcher responded with technical rebuttal, but vendor reiterated dismissal
-* **2025-06-27:** Researcher initiated public disclosure due to vendor dismissal
+* **2025-06-27:** Researcher initiated public disclosure due to final vendor dismissal
 
 ![image](https://github.com/user-attachments/assets/8317dd1d-95c7-4000-a942-f9435d40cfa8)
 
