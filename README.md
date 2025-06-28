@@ -59,14 +59,14 @@ Any file path the PHP process can read will be served back to the user.
 
 ## Proof of Concept
 
-**Create group and assign a single privilege** (`WebCfg - Diagnostics: Command`)
+**Create `low-priv` group and assign a single privilege** (`WebCfg - Diagnostics: Command`)
 ![Screenshot 2025-06-27 133201](https://github.com/user-attachments/assets/b1063a5c-442a-4628-ac94-e0fa5d6f10c4)
 
 > I appreciate the built-in security warning related to assigning the `WebCfg - Diagnostics: Command` privilege. But this disclaimer does not constitute as proper access control.
 >
 > A permission in a web interface should be scoped based on its label and intended use — not assumed to equate to root-level access on the underlying operating system.
 
-**Assign group to** `dev` **user**
+**Assign `low-priv` group to** `dev` **user**
 ![Screenshot 2025-06-27 133218](https://github.com/user-attachments/assets/7224934e-ae31-4aa1-b879-b4f1aee7e00c)
 
 This proof-of-concept demonstrates that a user assigned only the `WebCfg - Diagnostics: Command` permission can exfiltrate `/etc/passwd` by abusing the unsanitized `dlPath` parameter.
