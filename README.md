@@ -1,6 +1,6 @@
 # Arbitrary File Read in pfSense 2.8.0 via Diagnostics Web Interface
 
-#### CVE ID: ['CVE-2025-53392'](https://nvd.nist.gov/vuln/detail/CVE-2025-53392)
+#### CVE ID: [CVE-2025-53392](https://nvd.nist.gov/vuln/detail/CVE-2025-53392)
 
 #### Date: 2025-06-27
 
