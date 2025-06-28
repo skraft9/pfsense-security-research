@@ -143,11 +143,13 @@ This violates the principle of least privilege and breaks logical privilege boun
 | --------------------------- | ------------- | ------------------------------------------------------ |
 | **AV: Attack Vector**       | N (Network)   | Exploitable via the pfSense web interface over HTTPS   |
 | **AC: Attack Complexity**   | L (Low)       | Straightforward POST request with valid CSRF token     |
-| **PR: Privileges Required** | L (Low)       | Requires only `WebCfg - Diagnostics: Command` permission      |
+| **PR: Privileges Required** | L (Low)       | Requires only `WebCfg - Diagnostics: Command` permission |
 | **UI: User Interaction**    | N (None)      | No additional interaction needed                       |
 | **S: Scope**                | U (Unchanged) | Same component boundary (web app reads system file)    |
 | **C: Confidentiality**      | H (High)      | Arbitrary file read, including credentials and configs |
 | **I: Integrity**            | N (None)      | No tampering                                           |
 | **A: Availability**         | N (None)      | No denial-of-service                                   |
 
-**Base Score: 6.5 (Medium)**
+> Note: I selected `PR: Low` since the exploit only requires a narrowly scoped permission (`WebCfg - Diagnostics: Command`) and did not explicitly grant full admin access.
+
+**CVSS Base Score: 6.5 (Medium)**
