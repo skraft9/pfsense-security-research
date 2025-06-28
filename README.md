@@ -120,7 +120,7 @@ This violates the principle of least privilege and breaks logical privilege boun
 
 1. Restrict `dlPath` to a safe base directory (e.g., `/tmp`) using `realpath()` and prefix enforcement
 2. Strip or block paths with `..` or absolute paths
-3. Only allow downloads of files listed in a whitelist or temporary artifact directory
+3. Only allow downloads of files listed in a safelist or temporary artifact directory
 
 ---
 
