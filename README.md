@@ -38,8 +38,6 @@ An attacker with privileged web access can supply an arbitrary path in the `dlPa
 
 This functionality lacks any path sanitization, directory restriction, or access controls beyond permission assignment.
 
-This occurs even when a user only has the `WebCfg - Diagnostics: Command` permission assigned.
-
 ---
 
 ## Details
