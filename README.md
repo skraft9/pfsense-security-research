@@ -135,7 +135,7 @@ This violates the principle of least privilege and breaks logical privilege boun
 >
 > Privilege should be technically enforced — not assumed — and warnings in the UI are no substitute for secure design.
 
-The diagnostics web module on a firewall should include proper safeguards to prevent abuse against the underlying operating system.
+The diagnostics module in the web interface of a firewall should include proper safeguards to prevent abuse against the underlying operating system.
 
 * Diagnostic commands should be functionally limited to ping, traceroute, log view, etc.
 * Commands should run inside a restricted shell or chroot.
