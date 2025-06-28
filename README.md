@@ -131,7 +131,7 @@ This violates the principle of least privilege and breaks logical privilege boun
 
 ---
 
-![Screenshot 2025-06-28 122505](https://github.com/user-attachments/assets/6b0cfc68-fd06-4d53-8e12-11b777e8e29e)
+![Screenshot 2025-06-28 122505](https://github.com/user-attachments/assets/9095b858-bce4-483a-a6da-386840735b2a)
 
 ---
 
