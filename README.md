@@ -71,7 +71,7 @@ Any file path the PHP process can read will be served back to the user.
 **Assign group to** `dev` **user**
 ![Screenshot 2025-06-27 133218](https://github.com/user-attachments/assets/7224934e-ae31-4aa1-b879-b4f1aee7e00c)
 
-This proof-of-concept authenticates using a user account `dev` that is only assigned the `WebCfg - Diagnostics: Command` permission.
+This proof-of-concept authenticates with a user account `dev` that is only assigned the `WebCfg - Diagnostics: Command` permission.
 
 ```bash
 # 1. Start session and extract CSRF token
