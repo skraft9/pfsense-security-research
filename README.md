@@ -66,7 +66,7 @@ Any file path the PHP process can read will be served back to the user.
 
 > I appreciate the built-in security warning related to assigning the `WebCfg - Diagnostics: Command` privilege. However, this disclaimer does not constitute as proper access control.
 >
-> The existence of a warning does not justify a design that equates a single permission to unrestricted system-level file access.
+> A permission in a web interface should be scoped based on its label and intended use — not assumed to equate to root-level access on the underlying operating system.
 
 **Assign group to** `dev` **user**
 ![Screenshot 2025-06-27 133218](https://github.com/user-attachments/assets/7224934e-ae31-4aa1-b879-b4f1aee7e00c)
