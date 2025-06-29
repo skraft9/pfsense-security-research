@@ -14,7 +14,7 @@
 
 #### Version: pfSense CE 2.8.0 (latest stable as of June 26, 2025)
 
-#### CWE: CWE-36 (Absolute Path Traversal)
+#### CWE ID: [`CWE-36`](https://cwe.mitre.org/data/definitions/36.html) (Absolute Path Traversal)
 
 #### Estimated CVSS Base Score: 5.0 (Medium)
 
