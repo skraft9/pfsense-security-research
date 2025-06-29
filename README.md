@@ -34,8 +34,6 @@
 
 pfSense CE 2.8.0 contains a Local File Disclosure vulnerability in the diagnostics page `diag_command.php`, which allows authenticated users to download arbitrary files from the underlying file system.
 
-An attacker with privileged web access can supply an arbitrary path in the `dlPath` parameter to exfiltrate sensitive files. 
-
 This functionality lacks any path sanitization, directory restriction, or access controls beyond permission assignment.
 
 ---
