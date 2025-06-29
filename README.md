@@ -161,6 +161,9 @@ The diagnostics module within the web interface of a firewall should contain pro
 * File access should be explicitly scoped to safe directories (/tmp, /var/log).
 * Permissions should be fine-grained, and clear in scope.
 
-Before dismissing this research as trivial, understand that efforts like this often spark meaningful dialogue between security and infrastructure teams — leading to RBAC reevaluation, tighter privilege boundaries, and more effective approaches to application security.
+---
+
+## Why This Research Matters
+Before dismissing this research as trivial, understand that efforts like this often spark meaningful dialogue between security and infrastructure teams — leading to RBAC reevaluation, tighter privilege boundaries, and overall more effective approaches to application security.
 
 ---
