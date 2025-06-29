@@ -148,7 +148,7 @@ Reviewing pfSense documentation regarding user privileges — I couldn't find an
 
 The Diagnostics Command page warns about potential misuse, but the vendor documentation does not explicitly associate it with the `WebCfg - Diagnostics: Command privilege` or its root-level impact.
 ![image](https://github.com/user-attachments/assets/f050cac7-29ed-40f6-9437-972176a5885a)
-> Think about it — why would any legitimate user ever need to download `/etc/passwd` from a firewall web interface?
+> Think about it — when would a legitimate user ever need to download `/etc/passwd` through a firewall’s web interface?
 
 ---
 ## Security Expectations for Diagnostic Interfaces
