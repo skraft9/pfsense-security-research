@@ -14,11 +14,11 @@
 
 #### Version: pfSense CE 2.8.0 (latest stable as of June 26, 2025)
 
-#### CWE: CWE-552 (Files or Directories Accessible to External Parties)
+#### CWE: CWE-36 (Absolute Path Traversal)
 
-#### Estimated CVSS Base Score: 6.5 (Medium)
+#### Estimated CVSS Base Score: 5.0 (Medium)
 
-#### Estimated Vector String: `CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N`
+#### Estimated Vector String: `CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N`
 
 #### Type: Authenticated Arbitrary File Read / Local File Disclosure
 
@@ -151,20 +151,3 @@ A diagnostics module in the web interface of a firewall must contain proper safe
 * Permissions should be fine-grained, and clear in scope.
 
 ---
-
-## Estimated CVSS Breakdown
-
-| Metric                      | Value         | Justification                                          |
-| --------------------------- | ------------- | ------------------------------------------------------ |
-| **AV: Attack Vector**       | N (Network)   | Exploitable via the pfSense web interface over HTTPS   |
-| **AC: Attack Complexity**   | L (Low)       | Straightforward POST request with valid CSRF token     |
-| **PR: Privileges Required** | L (Low)       | Requires only `WebCfg - Diagnostics: Command` permission |
-| **UI: User Interaction**    | N (None)      | No additional interaction needed                       |
-| **S: Scope**                | U (Unchanged) | Same component boundary (web app reads system file)    |
-| **C: Confidentiality**      | H (High)      | Arbitrary file read, including credentials and configs |
-| **I: Integrity**            | N (None)      | No tampering                                           |
-| **A: Availability**         | N (None)      | No denial-of-service                                   |
-
-> Note: I selected `PR: Low` since the exploit only requires a narrowly scoped permission (`WebCfg - Diagnostics: Command`) and did not explicitly grant the user full admin permissions.
-
-**Estimated CVSS Base Score: 6.5 (Medium)**
