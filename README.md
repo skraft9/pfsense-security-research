@@ -141,12 +141,14 @@ This violates the principle of least privilege and breaks logical privilege boun
 
 ---
 
-Reviewing pfSense documentation regarding user privileges — I couldn't find any mention of the `WebCfg - Diagnostics: Command` privilege equating to root access.
+Challenging the vendor's claim that this functionality is "well-documented" — I found no mention in pfSense’s privilege documentation that the `WebCfg - Diagnostics: Command` permission equates to root-level access.
 ![Screenshot 2025-06-28 235613](https://github.com/user-attachments/assets/f1da5050-1820-4e81-b8e7-4dbe3735f2c6)
 
 ---
 
-The Diagnostics Command page warns about potential misuse, but the vendor documentation does not explicitly associate it with the `WebCfg - Diagnostics: Command privilege` or its root-level impact.
+The vendor may have been referring to the Diagnostics Command page, which includes a general warning about misuse. 
+
+But the documentation does not explicitly link this functionality to the `WebCfg - Diagnostics: Command` privilege or clarify that it grants root-level access.
 ![image](https://github.com/user-attachments/assets/f050cac7-29ed-40f6-9437-972176a5885a)
 > Think about it — when would a legitimate user ever need to download `/etc/passwd` through a firewall’s web interface?
 
