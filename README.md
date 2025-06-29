@@ -139,7 +139,7 @@ This violates the principle of least privilege and breaks logical privilege boun
 
 ---
 
-Challenging the vendor's claim that this functionality is "well-documented" — I found no mention in pfSense’s User Privileges documentation that the `WebCfg - Diagnostics: Command` permission equates to root-level access.
+Challenging the vendor's claim that this functionality is "well-documented" — I found no mention in pfSense’s User Privileges documentation that states the `WebCfg - Diagnostics: Command` permission equates to root-level access.
 ![Screenshot 2025-06-28 235613](https://github.com/user-attachments/assets/f1da5050-1820-4e81-b8e7-4dbe3735f2c6)
 
 ---
