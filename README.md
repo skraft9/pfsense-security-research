@@ -128,14 +128,7 @@ This violates the principle of least privilege and breaks logical privilege boun
 * **2025-06-27:** Netgate responded — dismissing the issue as intended behavior
 * **2025-06-27:** Researcher responded with technical rebuttal — vendor reiterated dismissal
 * **2025-06-27:** Researcher initiated public disclosure due to final vendor dismissal — requested CVE assignment from MITRE
-
----
-
-![Screenshot 2025-06-28 122505](https://github.com/user-attachments/assets/9095b858-bce4-483a-a6da-386840735b2a)
-
----
-
-![image](https://github.com/user-attachments/assets/8317dd1d-95c7-4000-a942-f9435d40cfa8)
+* **2025-06-28:** MITRE assigned CVE-2025-53392 with vendor disputed tag
 
 ---
 
