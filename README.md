@@ -143,7 +143,7 @@ Reviewing pfSense documentation regarding user privileges — I couldn't find an
 
 ---
 
-The diagnostics commands page does warns about potential misuse, but does not tie this functionality directly to the `WebCfg - Diagnostics: Command` privilege in the vendor documentation.
+The Diagnostics Command page warns about potential misuse, but the vendor documentation does not explicitly associate it with the `WebCfg - Diagnostics: Command privilege` or its root-level impact.
 ![image](https://github.com/user-attachments/assets/f050cac7-29ed-40f6-9437-972176a5885a)
 
 ---
