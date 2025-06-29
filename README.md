@@ -136,7 +136,19 @@ This violates the principle of least privilege and breaks logical privilege boun
 >
 > Privilege should be technically enforced — not assumed — and warnings in the UI are no substitute for secure design.
 
-A diagnostics module in the web interface of a firewall must contain proper safeguards to prevent abuse against the underlying operating system.
+---
+
+Reviewing pfSense documentation regarding user privileges — I couldn't find any mention of the `WebCfg - Diagnostics: Command` privilege equating to root access
+![Screenshot 2025-06-28 235613](https://github.com/user-attachments/assets/f1da5050-1820-4e81-b8e7-4dbe3735f2c6)
+
+---
+
+The diagnostics commands page does warns about potential misuse, but does not tie this functionality directly to the `WebCfg - Diagnostics: Command` privilege in the vendor documentation.
+![image](https://github.com/user-attachments/assets/f050cac7-29ed-40f6-9437-972176a5885a)
+
+---
+
+The diagnostics module within the web interface of a firewall must contain proper safeguards to prevent abuse against the underlying operating system.
 
 * Diagnostic commands should be functionally limited to ping, traceroute, log view, etc.
 * Commands should run inside a restricted shell or chroot.
