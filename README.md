@@ -62,9 +62,11 @@ Any file path the PHP process can read will be served back to the user.
 **Create `low-priv` group and assign a single privilege** (`WebCfg - Diagnostics: Command`)
 ![Screenshot 2025-06-27 133201](https://github.com/user-attachments/assets/b1063a5c-442a-4628-ac94-e0fa5d6f10c4)
 
-> I appreciate the built-in security warning related to assigning the `WebCfg - Diagnostics: Command` privilege. But this disclaimer does not constitute as proper access control.
->
-> A permission in a web interface should be scoped based on its label and intended use — not assumed to equate to root-level access on the underlying operating system.
+> While I acknowledge the presence of a security disclaimer for the `WebCfg - Diagnostics: Command` privilege, disclaimers alone do not replace sound access control.
+> 
+> The phrase “Allow access to the Diagnostics Command page” is ambiguous and understates the risk — it enables unrestricted root-level command execution, not just diagnostic access.
+> 
+> Privilege labels in a web interface must accurately reflect the scope and severity of the actions they permit, especially when they expose full administrative control.
 
 **Assign `low-priv` group to** `dev` **user**
 ![Screenshot 2025-06-27 133218](https://github.com/user-attachments/assets/7224934e-ae31-4aa1-b879-b4f1aee7e00c)
@@ -131,9 +133,10 @@ This violates the principle of least privilege and breaks logical privilege boun
 * **2025-06-28:** MITRE assigned [`CVE-2025-53392`](https://nvd.nist.gov/vuln/detail/CVE-2025-53392) with vendor disputed tag
 
 ---
-
+## Official Response from Netgate
+![Screenshot 2025-06-27 142702_redacted](https://github.com/user-attachments/assets/4b03ac3d-3feb-471e-8628-582fa3d9ef2e)
 > While the vendor asserts that access to this page equates to root, this conflates web-level permissions with unrestricted backend access.
->
+> 
 > Privilege should be technically enforced — not assumed — and warnings in the UI are no substitute for secure design.
 
 ---
@@ -147,8 +150,8 @@ The Diagnostics Command page warns about potential misuse, but the vendor docume
 ![image](https://github.com/user-attachments/assets/f050cac7-29ed-40f6-9437-972176a5885a)
 
 ---
-
-The diagnostics module within the web interface of a firewall must contain proper safeguards to prevent abuse against the underlying operating system.
+## Security Expectations for Diagnostic Interfaces
+The diagnostics module within the web interface of a firewall should contain proper safeguards to prevent abuse against the underlying operating system.
 
 * Diagnostic commands should be functionally limited to ping, traceroute, log view, etc.
 * Commands should run inside a restricted shell or chroot.
