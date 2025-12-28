@@ -18,7 +18,7 @@
 
 #### CVSS Base Score: 6.5 (Medium)
 
-#### Vector String: `CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N`
+#### Vector: `CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N`
 
 #### Type: Authenticated Arbitrary File Read / Local File Disclosure
 
