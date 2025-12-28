@@ -12,13 +12,13 @@
 
 #### Software Link: [https://www.pfsense.org/download/](https://www.pfsense.org/download/)
 
-#### Version: pfSense CE 2.8.0 (latest stable as of June 26, 2025)
+#### Version: pfSense CE 2.8.0
 
 #### CWE ID: [`CWE-36`](https://cwe.mitre.org/data/definitions/36.html) (Absolute Path Traversal)
 
-#### Estimated CVSS Base Score: 5.0 (Medium)
+#### CVSS Base Score: 6.5 (Medium)
 
-#### Estimated Vector String: `CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N`
+#### Estimated Vector String: `CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N`
 
 #### Type: Authenticated Arbitrary File Read / Local File Disclosure
 
